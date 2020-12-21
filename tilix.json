@@ -1,0 +1,54 @@
+{
+    "child": {
+        "child1": {
+            "child1": {
+                "directory": "\/home\/matheus\/Projects\/go-magics",
+                "height": 525,
+                "profile": "2b7c4080-0ddd-46c5-8f23-563fd3ba789d",
+                "readOnly": false,
+                "synchronizedInput": true,
+                "title": "${iconTitle}",
+                "type": "Terminal",
+                "uuid": "cce882e7-63bd-4834-b50d-973eb6a35a5e",
+                "width": 1266
+            },
+            "child2": {
+                "directory": "\/home\/matheus\/Projects\/go-magics",
+                "height": 525,
+                "profile": "98d7fd22-e117-4843-833b-7e3d357d90d4",
+                "readOnly": false,
+                "synchronizedInput": true,
+                "type": "Terminal",
+                "uuid": "c9d7e68c-b7bc-4c2b-bd6e-340943a362d1",
+                "width": 653
+            },
+            "orientation": 0,
+            "position": 65,
+            "ratio": 0.659375000000000044,
+            "type": "Paned"
+        },
+        "child2": {
+            "directory": "\/home\/matheus\/Projects\/go-magics",
+            "height": 527,
+            "overrideCommand": "",
+            "profile": "719b6308-e0de-4159-8000-c64bb7dd99b9",
+            "readOnly": false,
+            "synchronizedInput": true,
+            "title": "${id}: ${title}",
+            "type": "Terminal",
+            "uuid": "f33b1709-09e4-40cd-b87b-c3567abbe8d8",
+            "width": 1920
+        },
+        "orientation": 1,
+        "position": 49,
+        "ratio": 0.498575498575498599,
+        "type": "Paned"
+    },
+    "height": 1053,
+    "name": "Default",
+    "synchronizedInput": false,
+    "type": "Session",
+    "uuid": "30be1822-f1d8-4be8-8a89-e41daf8ba191",
+    "version": "1.0",
+    "width": 1920
+}
