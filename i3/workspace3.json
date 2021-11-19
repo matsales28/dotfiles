@@ -1,0 +1,23 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "pixel",
+    "current_border_width": 0,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 434,
+       "width": 722,
+       "x": 0,
+       "y": 0
+    },
+    "marks": [],
+    "name": "nvim",
+    "percent": 1,
+    "swallows": [
+       {
+         "class": "^URxvt$",
+         "instance": "nvim"
+       }
+    ],
+    "type": "con"
+}
+

@@ -1,0 +1,49 @@
+// vim:ts=4:sw=4:et
+{
+    "border": "pixel",
+    "current_border_width": 0,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 1005,
+       "width": 2510,
+       "x": 25,
+       "y": 50
+    },
+    "marks": [],
+    "name": "scopes.rb - website - Visual Studio Code",
+    "percent": 0.5,
+    "swallows": [
+       {
+       // "class": "^Code$",
+       // "instance": "^code$",
+       // "title": "^scopes\\.rb\\ \\-\\ website\\ \\-\\ Visual\\ Studio\\ Code$",
+       // "window_role": "^browser\\-window$"
+       }
+    ],
+    "type": "con"
+}
+
+{
+    "border": "pixel",
+    "current_border_width": 0,
+    "floating": "auto_off",
+    "geometry": {
+       "height": 434,
+       "width": 722,
+       "x": 0,
+       "y": 0
+    },
+    "marks": [],
+    "name": "enguser@enjeng243:~",
+    "percent": 0.5,
+    "swallows": [
+       {
+       // "class": "^Gnome\\-terminal$",
+       // "instance": "^gnome\\-terminal\\-server$",
+       // "title": "^enguser\\@enjeng243\\:\\~$",
+       // "window_role": "^gnome\\-terminal\\-window\\-9752eedc\\-a707\\-4108\\-ae8e\\-4c424beda072$"
+       }
+    ],
+    "type": "con"
+}
+
