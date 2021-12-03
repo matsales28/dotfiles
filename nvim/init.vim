@@ -126,6 +126,7 @@ map <Leader>rt :TestNearest<CR>
 map <Leader>rtt :TestFile<CR>
 map <Leader>rl :TestLast<CR>
 map <Leader>ra :TestSuite<CR>
+let test#ruby#rspec#executable = 'docker exec -it website rspec'
 lua << EOF
 local nvim_lsp = require('lspconfig')
 
