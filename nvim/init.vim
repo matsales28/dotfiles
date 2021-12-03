@@ -90,8 +90,7 @@ nnoremap gdh :diffget //2<CR>
 nnoremap gdl :diffget //3<CR>
 
 " Navigation
-map <C-J> :bnext<CR>
-map <C-K> :bprev<CR>
+map <C-J> <C-^> <CR>
 " Theme
 set termguicolors
 colorscheme xcodewwdc
@@ -126,7 +125,7 @@ endif
 map <Leader>rt :TestNearest<CR>
 map <Leader>rtt :TestFile<CR>
 map <Leader>rl :TestLast<CR>
-let test#ruby#rspec#executable = 'docker exec -it website rspec'
+map <Leader>ra :TestSuite<CR>
 lua << EOF
 local nvim_lsp = require('lspconfig')
 
