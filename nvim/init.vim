@@ -100,8 +100,8 @@ map <C-J> <C-^> <CR>
 " Theme
 colorscheme abstract
 set termguicolors
-hi Visual  ctermbg=236 guibg=Gray gui=none
-hi CursorLine ctermbg=236 cterm=NONE guifg=none guibg=Gray gui=NONE
+hi Visual  ctermbg=236 guibg=#1c1c1c gui=none
+hi CursorLine ctermbg=236 cterm=NONE guifg=none guibg=#1c1c1c gui=NONE
 
 
 inoremap <silent><expr> <TAB>
