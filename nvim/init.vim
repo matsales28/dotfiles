@@ -20,6 +20,7 @@ set cursorline
 set splitright
 set smartindent
 set clipboard=unnamedplus
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 
 " Leader
 let mapleader=' '
@@ -58,6 +59,12 @@ Plug 'nvim-lua/completion-nvim'
 Plug 'honza/vim-snippets'
 Plug 'tpope/vim-surround'
 Plug 'cseelus/vim-colors-lucid'
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'sotte/presenting.vim'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'akinsho/toggleterm.nvim'
+Plug 'ecomba/vim-ruby-refactoring'
 call plug#end()
 
 " Useful remaps
@@ -103,7 +110,7 @@ set termguicolors
 hi Visual  ctermbg=236 guibg=#1c1c1c gui=none
 hi CursorLine ctermbg=236 cterm=NONE guifg=none guibg=#1c1c1c gui=NONE
 
-
+map <Leader>t :ToggleTerm<CR>
 inoremap <silent><expr> <TAB>
 			\ pumvisible() ? coc#_select_confirm() :
 			\ coc#expandableOrJumpable() ?
@@ -136,6 +143,7 @@ map <Leader>rt :TestNearest<CR>
 map <Leader>rtt :TestFile<CR>
 map <Leader>rl :TestLast<CR>
 map <Leader>ra :TestSuite<CR>
+let test#ruby#rspec#executable = 'docker exec -it website rspec'
 lua << EOF
 local nvim_lsp = require('lspconfig')
 
@@ -171,6 +179,7 @@ buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>',
 buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
 end
+
 require('telescope').setup{
 defaults = {
 	-- ...
