@@ -39,3 +39,11 @@ _load_settings "$HOME/.zsh/configs"
 
 # aliases
 [[ -f ~/.aliases ]] && source ~/.aliases
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+export PATH="$HOME/.bin:$PATH"
+source /Users/matheus.sales/.asdf/asdf.sh
+source "$HOME/.asdf/asdf.sh"
+# recommended by brew doctor
+export PATH="/usr/local/bin:$PATH"
