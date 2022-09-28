@@ -70,8 +70,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git zsh-syntax-highlighting
-zsh-autosuggestions rails)
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions rails)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -126,3 +125,5 @@ export PATH="$PATH:/opt/homebrew/Cellar/mysql@5.7/5.7.38/bin"
 export APP_DIR=~/apps
 export SLACK_NAME="Matheus"
 alias underdog="cd ~/thoughtbot/underdog_fantasy/api"
+alias gclean='git branch | grep -v defaultBranch | xargs git branch -D'
+export EDITOR=nvim
