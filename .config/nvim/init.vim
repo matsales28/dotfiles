@@ -3,7 +3,7 @@ filetype plugin indent on
 filetype on
 filetype indent on
 " au BufWrite *.rb :Neoformat
-au BufWrite *.js :Prettier
+" au BufWrite *.js :Prettier
 
 " Sets
 set relativenumber
