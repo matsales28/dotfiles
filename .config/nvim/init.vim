@@ -24,7 +24,8 @@ set clipboard=unnamedplus
 set iskeyword-=_
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead *.ts setlocal filetype=typescript
-au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
+au BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
+au BufRead,BufNewFile *.test.txs set filetype=typescript
 nnoremap ; :
 xnoremap p pgvy
 
@@ -35,6 +36,8 @@ let g:ale_disable_lsp = 1
 autocmd FileType ruby setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType eruby setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2
+autocmd FileType typescript setlocal expandtab shiftwidth=2 tabstop=2
+autocmd FileType typescriptreact setlocal expandtab shiftwidth=2 tabstop=2
 autocmd BufRead,BufNewFile *.htm,*.html setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 " Plugins
@@ -76,10 +79,7 @@ autocmd BufRead,BufNewFile *.htm,*.html setlocal tabstop=2 shiftwidth=2 softtabs
 	 Plug 'jdsimcoe/abstract.vim'
 	 Plug 'pangloss/vim-javascript'
 	 Plug 'peitalin/vim-jsx-typescript'
-	 Plug 'dense-analysis/ale'       " Dependency: linter
-	 Plug 'itchyny/lightline.vim'    " Dependency: status line
-	 Plug 'maximbaz/lightline-ale'
-	 " " Plug 'ludovicchabant/vim-gutentags'
+	 Plug 'dense-analysis/ale'
          Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
 	 Plug 'liuchengxu/space-vim-theme'
 	 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
@@ -98,10 +98,40 @@ inoremap , ,<c-g>u
 inoremap . .<c-g>u
 inoremap ? ?<c-g>u
 inoremap ! !<c-g>u
+
+nnoremap  <silent>   <tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
+nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
+
 " Airline config
-let g:airline_section_x=''
-let g:airline_section_z=''
-let g:airline_section_y=''
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#tabline#formatter = 'jsformatter'
+let g:airline_theme='wombat'
+
+
+let g:airline_section_x = ''
+let g:airline_section_y = ''
+let g:airline_section_z = "Lines: %l/%L"
+
+if !exists('g:airline_symbols')
+  let g:airline_symbols = {}
+endif
+
+" powerline symbols
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+let g:airline_symbols.branch = ''
+let g:airline_symbols.readonly = ''
+let g:airline_symbols.linenr = '☰'
+let g:airline_symbols.maxlinenr = ''
+let g:airline_symbols.dirty='⚡'
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#right_sep = ''
+let g:airline#extensions#tabline#right_alt_sep = ''
+
 " Telescope
 nnoremap <C-p> <cmd>Telescope find_files<cr>
 nnoremap <C-l> <cmd>lua require("telescope").extensions.live_grep_args.live_grep_args()<cr>
@@ -110,7 +140,7 @@ nnoremap <C-b> <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Colorscheme
-colorscheme space_vim_theme
+colorscheme gruvbox
 
 " Nerdtree
 nnoremap <silent> <expr> <Leader>n g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
@@ -127,9 +157,6 @@ nnoremap <Leader>gu :Git pull<CR>
 nnoremap <Leader>gd :Gvdiff<CR>
 nnoremap gdh :diffget //2<CR>
 nnoremap gdl :diffget //3<CR>
-
-" Set this. Airline will handle the rest.
-let g:airline#extensions#ale#enabled = 1
 
 map <C-J> <C-^> <CR>
 " Theme
@@ -379,4 +406,4 @@ EOF
 "
 set textwidth=120
 set colorcolumn=+1
-highlight ColorColumn ctermbg=Blue
+highlight ColorColumn ctermbg=Red
