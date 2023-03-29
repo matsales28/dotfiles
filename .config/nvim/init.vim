@@ -38,6 +38,7 @@ autocmd FileType eruby setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType javascript setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType typescript setlocal expandtab shiftwidth=2 tabstop=2
 autocmd FileType typescriptreact setlocal expandtab shiftwidth=2 tabstop=2
+autocmd FileType markdown setlocal expandtab shiftwidth=2 tabstop=2
 autocmd BufRead,BufNewFile *.htm,*.html setlocal tabstop=2 shiftwidth=2 softtabstop=2
 
 " Plugins
@@ -87,6 +88,8 @@ autocmd BufRead,BufNewFile *.htm,*.html setlocal tabstop=2 shiftwidth=2 softtabs
 	 Plug 'nvim-telescope/telescope-live-grep-args.nvim'
 	 Plug 'kyazdani42/nvim-web-devicons'
 	 Plug 'pwntester/octo.nvim'
+	 Plug 'pbrisbin/vim-colors-off'
+	 Plug 'preservim/vim-colors-pencil'
  call plug#end()
 
 " Useful remaps
@@ -103,11 +106,10 @@ nnoremap  <silent>   <tab>  :if &modifiable && !&readonly && &modified <CR> :wri
 nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
 
 " Airline config
-let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#formatter = 'jsformatter'
-let g:airline_theme='wombat'
-
+let g:airline_theme='pencil'
 
 let g:airline_section_x = ''
 let g:airline_section_y = ''
@@ -116,6 +118,10 @@ let g:airline_section_z = "Lines: %l/%L"
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
+
+" Pencil
+let g:pencil_higher_contrast_ui = 1
+
 
 " powerline symbols
 let g:airline_left_sep = ''
@@ -140,7 +146,7 @@ nnoremap <C-b> <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Colorscheme
-colorscheme gruvbox
+colorscheme pencil
 
 " Nerdtree
 nnoremap <silent> <expr> <Leader>n g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
@@ -400,10 +406,3 @@ require"octo".setup({
     }
   }
 })
-
-EOF
-" let g:neoformat_try_formatprg = 1
-"
-set textwidth=120
-set colorcolumn=+1
-highlight ColorColumn ctermbg=Red
