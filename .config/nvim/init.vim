@@ -22,6 +22,7 @@ set splitright
 set smartindent
 set clipboard=unnamedplus
 set iskeyword-=_
+set wrap linebreak nolist
 au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
 au BufNewFile,BufRead *.ts setlocal filetype=typescript
 au BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
@@ -90,6 +91,8 @@ autocmd BufRead,BufNewFile *.htm,*.html setlocal tabstop=2 shiftwidth=2 softtabs
 	 Plug 'pwntester/octo.nvim'
 	 Plug 'pbrisbin/vim-colors-off'
 	 Plug 'preservim/vim-colors-pencil'
+	 Plug 'github/copilot.vim'
+	 Plug 'slim-template/vim-slim'
  call plug#end()
 
 " Useful remaps
@@ -110,6 +113,18 @@ nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :wri
 let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#formatter = 'jsformatter'
 let g:airline_theme='pencil'
+let iterm_profile = $ITERM_PROFILE
+
+" Pencil
+let g:pencil_higher_contrast_ui = 1
+colorscheme pencil
+
+if iterm_profile == "Dark"
+    set background=dark
+else
+    set background=light
+    hi ALEWarning ctermbg=7
+endif
 
 let g:airline_section_x = ''
 let g:airline_section_y = ''
@@ -118,10 +133,6 @@ let g:airline_section_z = "Lines: %l/%L"
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
-
-" Pencil
-let g:pencil_higher_contrast_ui = 1
-
 
 " powerline symbols
 let g:airline_left_sep = ''
@@ -145,8 +156,6 @@ nnoremap <C-f> <cmd>Telescope live_grep<cr>
 nnoremap <C-b> <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-" Colorscheme
-colorscheme pencil
 
 " Nerdtree
 nnoremap <silent> <expr> <Leader>n g:NERDTree.IsOpen() ? "\:NERDTreeClose<CR>" : bufexists(expand('%')) ? "\:NERDTreeFind<CR>" : "\:NERDTree<CR>"
@@ -158,11 +167,12 @@ nnoremap <Leader>gb :Git branch<CR>
 nnoremap <Leader>gca :Git commit --amend -v<CR>
 nnoremap <Leader>gw :Gwrite<CR>
 nnoremap <Leader>gp :Git push<CR>
-nnoremap <Leader>gfp :Git push -f<CR>
+nnoremap <Leader>gfp :Git push --force-with-lease<CR>
 nnoremap <Leader>gu :Git pull<CR>
 nnoremap <Leader>gd :Gvdiff<CR>
 nnoremap gdh :diffget //2<CR>
 nnoremap gdl :diffget //3<CR>
+
 
 map <C-J> <C-^> <CR>
 " Theme
@@ -181,6 +191,10 @@ endfunction
 
 let g:coc_snippet_next = '<tab>'
 let g:coc_global_extensions = ['coc-solargraph', 'coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
+
+" vimscript
+let g:copilot_node_command = "~/.asdf/installs/nodejs/18.15.0/bin/node"
+
 nmap <F2> <Plug>(coc-rename)
 
 " Formatter
@@ -200,9 +214,9 @@ map <Leader>rtt :TestFile<CR>
 map <Leader>rl :TestLast<CR>
 map <Leader>ra :TestSuite<CR>
 let test#ruby#rspec#executable = 'bundle exec rspec'
+
 lua << EOF
 local nvim_lsp = require('lspconfig')
-
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)

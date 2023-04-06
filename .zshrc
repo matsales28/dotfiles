@@ -137,3 +137,24 @@ source ~/.aliases
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+if [[ "$(uname -s)" == "Darwin" ]]; then
+    sith() {
+        val=$(defaults read -g AppleInterfaceStyle 2>/dev/null)
+        if [[ $val == "Dark" ]]; then
+            i
+        fi
+    }
+
+    i() {
+        if [[ $ITERM_PROFILE == "Terminal" ]]; then
+            echo -ne "\033]50;SetProfile=Dark\a"
+            export ITERM_PROFILE="Dark"
+        else
+            echo -ne "\033]50;SetProfile=Terminal\a"
+            export ITERM_PROFILE="Terminal"
+        fi
+    }
+
+    sith
+fi

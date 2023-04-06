@@ -24,6 +24,7 @@
 [commit]
   template = ~/.gitmessage
 	gpgSign = true
+	verbose = true
 [fetch]
   prune = true
 [rebase]
