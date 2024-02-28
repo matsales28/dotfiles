@@ -134,6 +134,7 @@ export SLACK_NAME="Matheus"
 alias gclean='git branch | grep -v defaultBranch | xargs git branch -D'
 export EDITOR=nvim
 source ~/.aliases
+export PG_CONFIG="$ASDF_DIR/shims/pg_config"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

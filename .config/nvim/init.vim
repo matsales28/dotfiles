@@ -44,55 +44,57 @@ autocmd BufRead,BufNewFile *.htm,*.html setlocal tabstop=2 shiftwidth=2 softtabs
 
 " Plugins
  call plug#begin()
-	 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
-	 Plug 'ianks/vim-tsx'
-	 Plug 'leafgarland/typescript-vim'
-	 Plug 'vim-ruby/vim-ruby'
-	 Plug 'tpope/vim-rails'
-	 Plug 'scrooloose/nerdtree'
-	 Plug 'morhetz/gruvbox'
-	 Plug 'ryanoasis/vim-devicons'
-	 Plug 'neovim/nvim-lspconfig'
-	 Plug 'nvim-lua/plenary.nvim'
-	 Plug 'sbdchd/neoformat'
-	 Plug 'nvim-telescope/telescope.nvim'
-	 Plug 'tpope/vim-commentary'
-	 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
-	 Plug 'vim-airline/vim-airline'
-	 Plug 'vim-airline/vim-airline-themes'
-	 Plug 'kana/vim-textobj-user'
-	 Plug 'nelstrom/vim-textobj-rubyblock'
-	 Plug 'tpope/vim-fugitive'
-	 Plug 'tpope/vim-endwise'
+	 Plug 'akinsho/toggleterm.nvim'
 	 Plug 'andrewradev/splitjoin.vim'
 	 Plug 'andrewradev/switch.vim'
-	 Plug 'cocopon/pgmnt.vim'
 	 Plug 'arzg/vim-colors-xcode'
-	 Plug 'vim-test/vim-test'
-	 Plug 'nvim-lua/completion-nvim'
-	 Plug 'honza/vim-snippets'
-	 Plug 'tpope/vim-surround'
+	 Plug 'cocopon/pgmnt.vim'
 	 Plug 'cseelus/vim-colors-lucid'
-	 Plug 'sotte/presenting.vim'
-	 Plug 'godlygeek/tabular'
-	 Plug 'plasticboy/vim-markdown'
-	 Plug 'akinsho/toggleterm.nvim'
-	 Plug 'ecomba/vim-ruby-refactoring'
-	 Plug 'jdsimcoe/abstract.vim'
-	 Plug 'pangloss/vim-javascript'
-	 Plug 'peitalin/vim-jsx-typescript'
 	 Plug 'dense-analysis/ale'
-         Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
-	 Plug 'liuchengxu/space-vim-theme'
-	 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
 	 Plug 'dracula/vim', { 'as': 'dracula' }
-	 Plug 'nvim-telescope/telescope-live-grep-args.nvim'
-	 Plug 'kyazdani42/nvim-web-devicons'
-	 Plug 'pwntester/octo.nvim'
-	 Plug 'pbrisbin/vim-colors-off'
-	 Plug 'preservim/vim-colors-pencil'
+	 Plug 'ecomba/vim-ruby-refactoring'
+	 Plug 'folke/trouble.nvim'
 	 Plug 'github/copilot.vim'
+	 Plug 'godlygeek/tabular'
+	 Plug 'honza/vim-snippets'
+	 Plug 'ianks/vim-tsx'
+	 Plug 'jdsimcoe/abstract.vim'
+	 Plug 'kana/vim-textobj-user'
+	 Plug 'kyazdani42/nvim-web-devicons'
+	 Plug 'leafgarland/typescript-vim'
+	 Plug 'liuchengxu/space-vim-theme'
+	 Plug 'morhetz/gruvbox'
+	 Plug 'nelstrom/vim-textobj-rubyblock'
+	 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+	 Plug 'neovim/nvim-lspconfig'
+	 Plug 'nvim-lua/completion-nvim'
+	 Plug 'nvim-lua/plenary.nvim'
+	 Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+	 Plug 'nvim-telescope/telescope-live-grep-args.nvim'
+	 Plug 'nvim-telescope/telescope.nvim'
+	 Plug 'pangloss/vim-javascript'
+	 Plug 'pbrisbin/vim-colors-off'
+	 Plug 'peitalin/vim-jsx-typescript'
+	 Plug 'plasticboy/vim-markdown'
+	 Plug 'preservim/vim-colors-pencil'
+	 Plug 'prettier/vim-prettier', { 'do': 'yarn install --frozen-lockfile --production' }
+	 Plug 'pwntester/octo.nvim'
+	 Plug 'ryanoasis/vim-devicons'
+	 Plug 'sbdchd/neoformat'
+	 Plug 'scrooloose/nerdtree'
 	 Plug 'slim-template/vim-slim'
+	 Plug 'sotte/presenting.vim'
+	 Plug 'tpope/vim-bundler'
+	 Plug 'tpope/vim-commentary'
+	 Plug 'tpope/vim-endwise'
+	 Plug 'tpope/vim-fugitive'
+	 Plug 'tpope/vim-rails'
+	 Plug 'tpope/vim-surround'
+	 Plug 'vim-airline/vim-airline'
+	 Plug 'vim-airline/vim-airline-themes'
+	 Plug 'vim-ruby/vim-ruby'
+	 Plug 'vim-test/vim-test'
+         Plug 'kristijanhusak/vim-js-file-import', {'do': 'npm install'}
  call plug#end()
 
 " Useful remaps
@@ -168,8 +170,10 @@ nnoremap <Leader>gca :Git commit --amend -v<CR>
 nnoremap <Leader>gw :Gwrite<CR>
 nnoremap <Leader>gp :Git push<CR>
 nnoremap <Leader>gfp :Git push --force-with-lease<CR>
-nnoremap <Leader>gu :Git pull<CR>
+nnoremap <Leader>gl :Git pull<CR>
 nnoremap <Leader>gd :Gvdiff<CR>
+nnoremap <Leader>gt :G stash<CR>
+nnoremap <Leader>gta :G stash apply<CR>
 nnoremap gdh :diffget //2<CR>
 nnoremap gdl :diffget //3<CR>
 
@@ -190,10 +194,15 @@ function! s:check_back_space() abort
 endfunction
 
 let g:coc_snippet_next = '<tab>'
-let g:coc_global_extensions = ['coc-solargraph', 'coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank', 'coc-prettier']
+let g:coc_global_extensions = ['coc-solargraph', 'coc-tslint-plugin', 'coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-yank']
 
 " vimscript
 let g:copilot_node_command = "~/.asdf/installs/nodejs/18.15.0/bin/node"
+let g:copilot_filetypes = {
+    \ 'gitcommit': v:true,
+    \ 'markdown': v:true,
+    \ 'yaml': v:true
+    \ }
 
 nmap <F2> <Plug>(coc-rename)
 
@@ -279,18 +288,6 @@ pickers = {
     }
   }
 }
-
--- Use a loop to conveniently call 'setup' on multiple servers and
--- map buffer local keybindings when the language server attaches
-local servers = { "solargraph" }
-for _, lsp in ipairs(servers) do
-	nvim_lsp[lsp].setup {
-		on_attach = on_attach,
-		flags = {
-			debounce_text_changes = 150,
-			}
-		}
-end
 
 require"octo".setup({
   default_remote = {"upstream", "origin"}; -- order to try remotes
