@@ -110,6 +110,8 @@ inoremap ! !<c-g>u
 nnoremap  <silent>   <tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bnext<CR>
 nnoremap  <silent> <s-tab>  :if &modifiable && !&readonly && &modified <CR> :write<CR> :endif<CR>:bprevious<CR>
 
+command AC :execute "vsp " . eval('rails#buffer().alternate()')
+
 " Airline config
 " let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#ale#enabled = 1

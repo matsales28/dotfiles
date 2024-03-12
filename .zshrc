@@ -159,3 +159,5 @@ if [[ "$(uname -s)" == "Darwin" ]]; then
 
     sith
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
