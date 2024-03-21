@@ -19,16 +19,6 @@ class Object
     "#{method_name} not found"
   end
 
-  # open particular method in nvim
-  def ocode(method_name)
-    file, line = sl(method_name)
-    if file && line
-      `nvim -g '#{file}:#{line}'`
-    else
-      "'#{method_name}' not found :(Try #{name}.lm to see available methods"
-    end
-  end
-
   # display method source in rails console
   def ds(method_name)
     method(method_name).source.display
@@ -66,11 +56,6 @@ def reload_irb
   puts 'Console Reloaded!'
 end
 
-# opens irbrc in nvim
-def edit_irb
-  `nvim ~/.irbrc` if system('nvim')
-end
-
 def bm
   # From http://blog.evanweaver.com/articles/2006/12/13/benchmark/
   # Call benchmark { } with any block and you get the wallclock runtime
@@ -96,9 +81,7 @@ def ll
   puts 'Welcome to rails console. Here are few list of pre-defined methods you can use.'
   puts '============================================================================================================='
   puts 'obj.sl(:method) ------> source location e.g lead.sl(:name)'
-  puts 'obj.ocode(:method) ---> open method in nvim e.g lead.ocode(:name)'
   puts 'obj.dispsoc(:method) -> display method source in rails console e.g lead.dispsoc(:name)'
-  puts 'obj.oo ---------------> open object json in vs code e.g lead.oo'
   puts 'hist(n) --------------> command history e.g hist(10)'
   puts 'cp(str) --------------> copy string in clipboard e.g cp(lead.name)'
   puts 'bm(block) ------------> benchmarking for block passed as an argument e.g bm { Lead.all.pluck(:stage);0 }'
